@@ -1,2 +1,4 @@
 __pydata__/
 .ipynb_checkpoints/
+*.png
+*.jpg
