@@ -1,5 +1,7 @@
 __pydata__/
 .ipynb_checkpoints/
+data_real/
 cropped/
+crop_letter/
 *.png
 *.jpg
