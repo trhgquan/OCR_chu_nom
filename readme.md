@@ -19,5 +19,14 @@ Trong repository này chứa:
 - [2] kmat2019 - [CenterNet -Keypoint Detector-
 ](https://www.kaggle.com/kmat2019/centernet-keypoint-detector)
 
+## Trân trọng cảm ơn:
+- basu369victor - Kuzushiji Recognition just like Digit Recognition
+- kmat2019 - CenterNet -Keypoint Detector-
+- Anh [Trần Xuân Hoàng](https://github.com/hoangxtr) (Thị giác máy tính - VNUHCM-UT) đã giải đáp khúc mắc và hướng dẫn trong quá trình train model.
+- Bạn [Nguyễn Thanh Sang](https://github.com/hoangxtr) (Kỹ thuật dữ liệu - HCMUTE) đã cho nhiều tips tuyệt vời trong quá trình train model.
+- Chị [Phạm Ngọc Thắm](https://www.facebook.com/vam.p.pham) (Khoa Ngôn ngữ Trung Quốc - VNUHCM-USSH) đã tham gia test .
+- *Một bạn chưa biết tên* - (không biết khoa gì - VNUHCM-USSH) đã confirm những chữ được OCR đúng với bản gốc.
+- MiAI - vì đã viết tutorial flow_from_directory.
+
 VNUHCM - University of Sicence, 2021.
 
