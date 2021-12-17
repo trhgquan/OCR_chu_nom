@@ -5,7 +5,7 @@
 ## Tóm tắt:
 Với bài toán OCR (Optical Character Recognition - Nhận dạng kí tự quang học) chữ Nôm, hướng giải quyết được đưa ra như sau:
 - Dùng CenterNet dựng heatmap và vẽ bounding box cho mỗi chữ.
-- Dùng một model classify chữ viết thông thường để phân loại chữ nằm trong vùng được nhận dạng bên trên.
+- Dùng một model classify để phân loại chữ nằm trong vùng được nhận dạng bên trên.
 
 ## Mã nguồn:
 Trong repository này chứa:
