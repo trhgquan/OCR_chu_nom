@@ -24,7 +24,7 @@ Trong repository này chứa:
 - kmat2019 - CenterNet -Keypoint Detector-
 - Anh [Trần Xuân Hoàng](https://github.com/hoangxtr) (Thị giác máy tính - VNUHCM-UT) đã giải đáp khúc mắc và cho ý kiến tham khảo trong quá trình train model.
 - Bạn [Nguyễn Thanh Sang](https://github.com/tsdocode) (Kỹ thuật dữ liệu - HCMUTE) đã cho nhiều tips tuyệt vời trong quá trình train model.
-- Chị [Phạm Ngọc Thắm](https://www.facebook.com/vam.p.pham) (Khoa Ngôn ngữ Trung Quốc - VNUHCM-USSH) đã tham gia test và giải đáp thắc mắc về chữ Nôm.
+- Chị [Phạm Ngọc Thắm](https://www.facebook.com/vam.p.pham) (Ngữ văn Trung Quốc - VNUHCM-USSH) đã tham gia test và giải đáp thắc mắc về chữ Nôm.
 - *Một bạn chưa biết tên* - (không biết khoa gì - VNUHCM-USSH) đã tham gia test.
 - MiAI - vì đã viết tutorial flow_from_directory.
 
