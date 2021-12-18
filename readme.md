@@ -14,6 +14,12 @@ Trong repository này chứa:
 - `do_an_real.ipynb`: Train model classification, dùng 42 ảnh đầu của dataset (16311 samples, 1144 classes).
 - `do_an_real_second_approach.ipynb`: Train model CenterNet để dựng heatmap cho ảnh. Có demo pipeline khi hoàn tất.
 
+### Demo:
+```
+cd demo
+python predict.py --input=<file ảnh input> [--print_image (nếu cần in ra ảnh có bounding box và label)]
+```
+
 ## Các tài liệu tham khảo:
 - [1] basu369victor - [Kuzushiji Recognition just like Digit Recognition](https://www.kaggle.com/basu369victor/kuzushiji-recognition-just-like-digit-recognition/notebook)
 - [2] kmat2019 - [CenterNet -Keypoint Detector-
