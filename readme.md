@@ -15,8 +15,14 @@ Trong repository này chứa:
 - `do_an_real_second_approach.ipynb`: Train model CenterNet để dựng heatmap cho ảnh. Có demo pipeline khi hoàn tất.
 
 ### Demo:
+Cài đặt các package cần thiết:
 ```
 cd demo
+pip install -r requirements.txt
+```
+
+Chạy `predict.py`:
+```
 python predict.py --input=<file ảnh input> [--print_image (nếu cần in ra ảnh có bounding box và label)]
 ```
 
