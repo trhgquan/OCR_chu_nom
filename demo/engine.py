@@ -112,6 +112,9 @@ class OCR_Chu_Nom_Engine:
         return x
     
     def create_model(self, input_shape, size_detection_mode = True, aggregation = True):
+        '''Create CNN model.
+        '''
+
         input_layer = Input(input_shape)
 
         # Resized input
@@ -202,6 +205,9 @@ class OCR_Chu_Nom_Engine:
         return model
 
     def split_and_detect(self, model, img, height_split_recommended, width_split_recommended, score_thresh = 0.3, iou_thresh = 0.4):
+        '''Split image to many parts and detect boxes on them.
+        '''
+
         width, height = img.size
         pred_in_w, pred_in_h = 512, 512
         pred_out_w, pred_out_h = 128, 128
@@ -285,6 +291,8 @@ class OCR_Chu_Nom_Engine:
         return box_and_score_all
       
     def NMS_all(self, predicts, category_n, score_thresh, iou_thresh):
+        '''Non Maximum Suppression to find best boxes among some boxes.
+        '''
         yc = predicts[..., category_n] + np.arange(self.__pred_out_h).reshape(-1, 1)
         xc = predicts[..., category_n + 1] + np.arange(self.__pred_out_w).reshape(1, -1)
 
@@ -320,6 +328,8 @@ class OCR_Chu_Nom_Engine:
         return box_and_score_all[sorted(unique_idx)]
 
     def NMS(self, score, yc, xc, height, width, iou_thresh, merge_mode = False):
+        '''Non Maximum Suppression to find best box.
+        '''
         if merge_mode:
             score = score
             top, left = yc, xc
@@ -384,44 +394,39 @@ class OCR_Chu_Nom_Engine:
         # Model1: determine how to split image
         print('Model 1')
         
-        img_handle = Image.open(image_path).convert('RGB')
+        with Image.open(image_path).convert('RGB') as img_handle:
+            img_h, img_w = img_handle.size
+        
+            aspect_ratio_pic = img_h / img_w
 
-        img_h, img_w = img_handle.size
-    
-        aspect_ratio_pic = img_h / img_w
+            img = np.asarray(img_handle.resize((512, 512)).convert('RGB'))
+            predicted_size = self.__model_1.predict(
+                img.reshape(1, 512, 512, 3) / 255
+            )
 
-        img = np.asarray(img_handle.resize((512, 512)).convert('RGB'))
-        predicted_size = self.__model_1.predict(
-            img.reshape(1, 512, 512, 3) / 255
-        )
+            detect_num_h = aspect_ratio_pic * np.exp(-predicted_size / 2)
+            detect_num_w = detect_num_h / aspect_ratio_pic
 
-        detect_num_h = aspect_ratio_pic * np.exp(-predicted_size / 2)
-        detect_num_w = detect_num_h / aspect_ratio_pic
+            h_split_recommend = np.maximum(1, detect_num_h / self.__base_detect_num_h)
+            w_split_recommend = np.maximum(1, detect_num_w / self.__base_detect_num_w)
 
-        h_split_recommend = np.maximum(1, detect_num_h / self.__base_detect_num_h)
-        w_split_recommend = np.maximum(1, detect_num_w / self.__base_detect_num_w)
-
-        print('Recommended split_h: {}, split_w: {}'.format(
-            h_split_recommend,
-            w_split_recommend
-        ))
+            print('Recommended split_h: {}, split_w: {}'.format(
+                h_split_recommend,
+                w_split_recommend
+            ))
         
         # Model2: detection with CenterNet
         print('Model 2')
         
-        img = Image.open(image_path).convert('RGB')
-        box_and_score_all = self.split_and_detect(
-            self.__model_2,
-            img,
-            h_split_recommend, w_split_recommend,
-            score_thresh = 0.3, iou_thresh = 0.4
-        )
+        with Image.open(image_path).convert('RGB') as img:
+            box_and_score_all = self.split_and_detect(
+                self.__model_2,
+                img,
+                h_split_recommend, w_split_recommend,
+                score_thresh = 0.3, iou_thresh = 0.4
+            )
 
-        print('Found {} boxes'.format(len(box_and_score_all)))
-        
-        if (len(box_and_score_all) > 0) and print_img:
-            img = self.draw_rectangle(box_and_score_all[:, 1:], img, 'red')
-            img.save(boxed_image_file)
+            print('Found {} boxes'.format(len(box_and_score_all)))
         
         # Model3: classification
         print('Model 3')
@@ -453,6 +458,7 @@ class OCR_Chu_Nom_Engine:
                 ocred_data.append(current_box)
 
         if print_img:
+            # Draw label.
             with Image.open(image_path).convert('RGB') as img:
                 char_draw = ImageDraw.Draw(img)
                 for out in ocred_data:
@@ -466,7 +472,14 @@ class OCR_Chu_Nom_Engine:
                     )            
 
                 img.save(labeled_image_file)
+            
+            # Draw boxes.
+            if len(box_and_score_all) > 0:
+                with Image.open(image_path).convert('RGB') as img:
+                    img = self.draw_rectangle(box_and_score_all[:, 1:], img, 'red')
+                    img.save(boxed_image_file)
         
+        # Write ocr-ed data to file.
         with open(ocred_text_file, 'w+', encoding = 'utf-8') as f:
             for out in ocred_data:
                 char, top, left, bottom, right = out
@@ -477,4 +490,3 @@ class OCR_Chu_Nom_Engine:
             print('Image with label saved to', labeled_image_file)
         
         print('OCR-ed data saved to', ocred_text_file)
-
