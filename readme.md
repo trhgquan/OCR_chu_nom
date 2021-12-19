@@ -7,12 +7,23 @@ Với bài toán OCR (Optical Character Recognition - Nhận dạng kí tự qua
 - Dùng CenterNet dựng heatmap và vẽ bounding box cho mỗi chữ.
 - Dùng một model classify để phân loại chữ nằm trong vùng được nhận dạng bên trên.
 
+## Kết quả
+Detection:
+
+<img src='demo-boxed.png' width = 75% height = 75%/>
+
+Classification:
+
+<img src='demo-labeled.png' width = 75% height = 75%>
+
 ## Mã nguồn:
 Trong repository này chứa:
 - `create_data.py`: Tạo file .csv gồm tên file ảnh và nhãn từng chữ Nôm ban đầu.
 - `crop_image.py`: Crop ảnh thành các file nhỏ để train model classification, dùng cho bước 3 link [2] (xem tài liệu tham khảo)
-- `do_an_real.ipynb`: Train model classification, dùng 42 ảnh đầu của dataset (16311 samples, 1144 classes).
-- `do_an_real_second_approach.ipynb`: Train model CenterNet để dựng heatmap cho ảnh. Có demo pipeline khi hoàn tất.
+- `train_classification.ipynb`: Train model classification, dùng 42 ảnh đầu của dataset (16311 samples, 1144 classes).
+- `train_detection_with_centernet.ipynb`: Train model CenterNet để dựng heatmap cho ảnh. Có demo pipeline khi hoàn tất.
+- `demo/engine.py`: OCR_Chu_Nom_Engine xây dựng từ code trong 2 file notebook bên trên.
+- `demo/predict.py`: File code demo.
 
 ### Demo:
 Cài đặt các package cần thiết:
