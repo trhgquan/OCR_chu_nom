@@ -51,5 +51,5 @@ python predict.py --input=<file ảnh input> [--print_image (nếu cần in ra �
 - *Một bạn chưa biết tên* - (không biết khoa gì - VNUHCM-USSH) đã tham gia test.
 - MiAI - vì đã viết tutorial flow_from_directory.
 
-VNUHCM - University of Sicence, 2021.
+VNUHCM - University of Science, 2021.
 
