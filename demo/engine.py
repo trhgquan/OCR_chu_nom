@@ -57,9 +57,11 @@ class OCR_Chu_Nom_Engine:
 
     @staticmethod
     def draw_rectangle(box_and_score, img, color):
-        number_of_rect = np.minimum(500, len(box_and_score))
+        number_of_rect = len(box_and_score) # np.minimum(500, len(box_and_score))
 
-        for i in reversed(list(range(number_of_rect))):
+        print('Drawing bounding boxes..')
+
+        for i in tqdm(reversed(list(range(number_of_rect)))):
             top, left, bottom, right = box_and_score[i, :]
 
             top, left, bottom, right = np.floor(top + 0.5).astype('int32'), np.floor(left + 0.5).astype('int32'), np.floor(bottom + 0.5).astype('int32'), np.floor(right + 0.5).astype('int32')
@@ -392,7 +394,7 @@ class OCR_Chu_Nom_Engine:
         ocred_text_file = 'result/char/{}.txt'.format(filename)
 
         # Model1: determine how to split image
-        print('Model 1')
+        print('Model 1: Calculating..')
         
         with Image.open(image_path).convert('RGB') as img_handle:
             img_h, img_w = img_handle.size
@@ -416,7 +418,7 @@ class OCR_Chu_Nom_Engine:
             ))
         
         # Model2: detection with CenterNet
-        print('Model 2')
+        print('Model 2: Detecting..')
         
         with Image.open(image_path).convert('RGB') as img:
             box_and_score_all = self.split_and_detect(
@@ -429,7 +431,7 @@ class OCR_Chu_Nom_Engine:
             print('Found {} boxes'.format(len(box_and_score_all)))
         
         # Model3: classification
-        print('Model 3')
+        print('Model 3: Recognising..')
 
         ocred_data = []
 
