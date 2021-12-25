@@ -12,7 +12,7 @@ Detection:
 
 <img src='demo-boxed.png' width = 75% height = 75%/>
 
-Classification:
+Recognition:
 
 <img src='demo-labeled.png' width = 75% height = 75%>
 
