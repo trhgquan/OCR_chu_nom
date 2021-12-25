@@ -4,8 +4,8 @@
 
 ## Tóm tắt:
 Với bài toán OCR (Optical Character Recognition - Nhận dạng kí tự quang học) chữ Nôm, hướng giải quyết được đưa ra như sau:
-- Dùng CenterNet dựng heatmap và vẽ bounding box cho mỗi chữ.
-- Dùng một model classify để phân loại chữ nằm trong vùng được nhận dạng bên trên.
+- Segmentation: dùng CenterNet dựng heatmap và vẽ bounding box cho mỗi chữ.
+- Recognition: dùng recognition model tương tự bài toán nhận dạng chữ viết tay (Handwritten recognition).
 
 ## Kết quả
 Detection:
@@ -19,9 +19,9 @@ Classification:
 ## Mã nguồn:
 Trong repository này chứa:
 - `create_data.py`: Tạo file .csv gồm tên file ảnh và nhãn từng chữ Nôm ban đầu.
-- `crop_image.py`: Crop ảnh thành các file nhỏ để train model classification, dùng cho bước 3 link [2] (xem tài liệu tham khảo)
-- `train_classification.ipynb`: Train model classification, dùng 50 ảnh đầu của dataset (16311 samples, 1144 classes).
-- `train_detection_with_centernet.ipynb`: Train model segmentation sử dụng CenterNet. Có demo pipeline khi hoàn tất.
+- `crop_image.py`: Crop ảnh thành các file nhỏ để train recognition model, dùng cho bước 3 link [2] (xem tài liệu tham khảo). Thực chất mình không dùng đến :/
+- `train_recognition.ipynb`: Train recognition, dùng 50 ảnh đầu của dataset (16311 samples, 1144 classes).
+- `train_detection_with_centernet.ipynb`: Train segmentation model sử dụng CenterNet. Có demo pipeline khi hoàn tất.
 - `demo/engine.py`: OCR_Chu_Nom_Engine xây dựng từ code trong 2 file notebook bên trên.
 - `demo/predict.py`: Chạy file này để thấy phép thuật của làng Lá.
 
