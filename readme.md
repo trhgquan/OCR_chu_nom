@@ -20,10 +20,10 @@ Classification:
 Trong repository này chứa:
 - `create_data.py`: Tạo file .csv gồm tên file ảnh và nhãn từng chữ Nôm ban đầu.
 - `crop_image.py`: Crop ảnh thành các file nhỏ để train model classification, dùng cho bước 3 link [2] (xem tài liệu tham khảo)
-- `train_classification.ipynb`: Train model classification, dùng 42 ảnh đầu của dataset (16311 samples, 1144 classes).
-- `train_detection_with_centernet.ipynb`: Train model CenterNet để dựng heatmap cho ảnh. Có demo pipeline khi hoàn tất.
+- `train_classification.ipynb`: Train model classification, dùng 50 ảnh đầu của dataset (16311 samples, 1144 classes).
+- `train_detection_with_centernet.ipynb`: Train model segmentation sử dụng CenterNet. Có demo pipeline khi hoàn tất.
 - `demo/engine.py`: OCR_Chu_Nom_Engine xây dựng từ code trong 2 file notebook bên trên.
-- `demo/predict.py`: File code demo.
+- `demo/predict.py`: Chạy file này để thấy phép thuật của làng Lá.
 
 ### Demo:
 Cài đặt các package cần thiết:
