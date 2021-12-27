@@ -2,6 +2,14 @@
 
 Đồ án môn học Nhập môn xử lí ngôn ngữ tự nhiên - Introduction to Natural Language Processing (CSC15006).
 
+Nhóm SV thực hiện:
+
+|MSSV|Họ tên|
+|-----|-----|
+|19120338|Trần Hoàng Quân|
+|19120266|Nguyễn Hoàng Anh Kiệt|
+|19120179|Võ Trương Trung Chánh|
+
 ## Tóm tắt:
 Với bài toán OCR (Optical Character Recognition - Nhận dạng kí tự quang học) chữ Nôm, hướng giải quyết được đưa ra như sau:
 - Segmentation: dùng CenterNet dựng heatmap và vẽ bounding box cho mỗi chữ.
