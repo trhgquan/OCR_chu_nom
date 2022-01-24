@@ -59,5 +59,7 @@ python predict.py --input=<file ảnh input> [--print_image (nếu cần in ra �
 - *Một bạn chưa biết tên* - (không biết khoa gì - VNUHCM-USSH) đã tham gia test.
 - MiAI - vì đã viết tutorial flow_from_directory.
 
-VNUHCM - University of Science, 2021.
+## LICENSE
+This project is licensed under the terms of [The GNU GPL-v3.0 License](LICENSE)
 
+VNUHCM - University of Science, 2021.
