@@ -34,16 +34,22 @@ Trong repository này chứa:
 - `demo/predict.py`: Chạy file này để thấy phép thuật của làng Lá.
 
 ### Demo:
-Cài đặt các package cần thiết:
-```
-cd demo
-pip install -r requirements.txt
-```
+1. Cài đặt các package cần thiết:
+    ```
+    cd demo
+    pip install -r requirements.txt
+    ```
 
-Chạy `predict.py`:
-```
-python predict.py --input=<file ảnh input> [--print_image (nếu cần in ra ảnh có bounding box và label)]
-```
+2. Download model đã train [tại đây](https://drive.google.com/file/d/1jBJk6NzrYyAuFMY8tfBN3Pq9sJe4dNz0/view?usp=sharing). 
+
+3. Giải nén file vào thư mục `demo` như cây thư mục sau:
+
+![demo-folder-tree](demo-folder-tree.png)
+
+4. Chạy `predict.py`:
+    ```
+    python predict.py --input=<file ảnh input> [--print_image (nếu cần in ra ảnh có bounding box và label)]
+    ```
 
 ## Các tài liệu tham khảo:
 - [1] basu369victor - [Kuzushiji Recognition just like Digit Recognition](https://www.kaggle.com/basu369victor/kuzushiji-recognition-just-like-digit-recognition/notebook)
